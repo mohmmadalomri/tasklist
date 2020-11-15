@@ -16,3 +16,42 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('about', function () {
+
+
+
+    return view('about');
+});
+
+
+
+Route::get('tasks', function () {
+
+
+    $Tasks =[
+       '1' => 'task1',
+       '2' => 'task2',
+       '3' => 'task3'
+
+    ];
+    return view('tasks',compact('Tasks'));
+});
+
+
+
+Route::get('task/show/{id}', function ($id) {
+
+    $Tasks =[
+        '1' => 'task1',
+        '2' => 'task2',
+        '3' => 'task3'
+    ];
+
+    $Task =$Tasks[$id];
+    dd($Task);
+        return view('show',compact('Task'));
+});
+
+
