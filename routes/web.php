@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
+use function GuzzleHttp\Promise\task;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,40 +21,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('about', function () {
-
-
-
-    return view('about');
-});
-
-
-
 Route::get('tasks', function () {
 
-
-    $Tasks =[
-       '1' => 'task1',
-       '2' => 'task2',
-       '3' => 'task3'
-
-    ];
-    return view('tasks',compact('Tasks'));
+    $Tasks =DB::table('task')->get();
+    return view('tasks',compact('tasks'));
 });
 
-
-
-Route::get('task/show/{id}', function ($id) {
-
-    $Tasks =[
-        '1' => 'task1',
-        '2' => 'task2',
-        '3' => 'task3'
-    ];
-
-    $Task =$Tasks[$id];
-    dd($Task);
-        return view('show',compact('Task'));
+Route::get('tasks/show/{id}', function ($id) {
+    $task =DB::table('tasks')->find($id);
+    return view('show'compact('task'));
 });
-
-

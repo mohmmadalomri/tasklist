@@ -13,10 +13,9 @@
 
     <ul>
 
-        @foreach ($Tasks as $key => $Tasks)
+        @foreach ($Tasks as $Task)
         <li>
-            <a href="{{'task/show/' .  $key}}"> <h2>{{$Tasks}}</h2> </a>
-
+           {{$Task->title}}
         </li>
         @endforeach
 
