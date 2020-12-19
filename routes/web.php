@@ -41,10 +41,24 @@ Route::get('app', function () {
 
 
 Route::post('store', function (Request $request) {
-      DB::table('tasks')->insert([
-          'title' => $request->title
+    //  DB::table('tasks')->insert([
+     //     'title' => $request->title
 
-       ] );
+     //  ] );
+
+
+     $task =new Task;
+     $task->title = $request->$title;
+     $task-> save();
+
+
+
+    return redirect()->back();
+});
+
+
+Route::post('Delete/{title}', function ($title) {
+    Task::where('title',$title)-> delete();
 
     return redirect()->back();
 });

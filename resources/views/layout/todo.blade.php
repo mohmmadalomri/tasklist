@@ -56,8 +56,8 @@
 
                                     <!-- Task Delete Button -->
                                     <td>
-                                        <form action="#" method="POST">
-                                            <button type="submit" class="btn btn-danger">
+                                        <form action="Delete/{{$task->title}}" method="POST">
+                                            <button type="submit" class="btn btn-danger" name="Delete">
                                                 <i class="fa fa-btn fa-trash"></i>Delete
                                             </button>
                                         </form>
